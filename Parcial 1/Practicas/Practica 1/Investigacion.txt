@@ -1,0 +1,109 @@
+Directivas de preprocesador.
+
+Programas de preprocesado proveen directivas de preprocesador que le indican
+al compilador preprocesar código fuente antes de pasar a la fase de compilación.
+Todas las directivas comienzan con el símbolo hash (#). Estas pueden ser colocadas
+en cualquier parte del código.
+
+Existen 4 tipos príncipales de directivas de preprocesador:
+
+■ Macros.
+■ Inclusión de archivos.
+■ Compilación condicional.
+■ Otros.
+
+1.- Macros.
+
+	Son una pieza de código en un programa al que se le otorga un nombre. Cuando
+	el nombre es encontrado por el compilador, este lo reemplaza por el fragmento
+	real de código. La directiva #define es utilizada para definir una macro.
+	
+	■ Macros con argumentos.
+	
+		También pueden pasarse argumentos a macros y se comportan de manera similar a
+		una función.
+
+	■ Nombres de macros predefinidos.
+		
+		■ __LINE__ 
+			
+			Valor entero que representa la línea actual en el código fuente
+			siendo compilada.
+		
+		■ __FILE__
+		
+			String que contiene el nombre del archivo fuente siendo compilado.
+			
+		■ __DATE__
+		
+			String que contiene la fecha en que comenzó el proceso de compilación,
+			en la forma Mes Día Año.
+			
+		■ __TIME__
+		
+			String que contiene la hora en que comenzó el proceso de compilación, en
+			la forma Hora:Minuto:Segundo.
+		
+2.- Inclusión de archivos.
+	
+	Esta directiva le indica al compilador que incluya un archivo en el código fuente
+	del programa. Son dos los tipos de archivos que pueden incluirse:
+	
+	■ Archivos de cabecera (.h) o archivos estándar.
+		
+		Estos archivos contienen definiciones de funciones predefinidas. Estos deben
+		ser incluidos para el correcto funcionamiento de algunas funciones. Diversas
+		funciones están incluídas en diferentes archivos de cabecera. La sintaxis es:
+		
+		#include <nombre_archivo>
+		
+		en donde "nombre_archivo" es el nombre del archivo a ser incluido. Los corchetes
+		angulares < y > indican al compilador que busque el archivo en la dirección estándar.
+	
+	■ Archivos definidos por el usuario.
+	
+		Cualquier archivo que haya sido creado por el usuario puede ser incluido usando
+		la sintaxis
+		
+		#include "nombre_archivo"
+		
+		Debe de considerarse que el archivo debe de estar en la mism ubicación que el archivo
+		.cpp principal, de lo contrario debe indicarse la ruta del archivo.
+	
+3-. Compilación condicional.
+		
+	Es un tipo de directiva que ayuda a compilar una cierta porción del programa u 
+	omitirla dependiendo de ciertas condiciones. Esto es realizado utilizando los comandos
+	#ifdef, #ifndef, #if, #else, #elif y #endif
+		
+4.- Otros.
+	
+	Además de las directivas mencionadas anteriormente, tambien se encuentran las siguientes.
+		
+	■ #line
+			
+		Sirve para manipular el mensaje de error que entrega el compilador cuando detecta
+		alguna falla durante el proceso de compilación. El formato es:
+		
+		#line numero "nombre_archivo"
+			
+		en donde numero es el nuevo numero de linea que será asignado a la siguiente 
+		línea de código. Los números de líneas de líneas sucesivas serán incrementados
+		de uno en uno a partir de este punto.
+		nombre_archivo es un parametro opcional que permite redefinir el nombre del archivo
+		que se mostrará.
+			
+	■ #undef
+		
+		Se utiliza para indefinir una macro existente. Después de ser utilizada, cada #ifdef 
+		en el que se evalue la macro devolvera false.
+		
+	■ #error
+		
+		Aborta la compilación al ser encontrada, generando un error de compilación que puede
+		ser especificada su parametro.
+			
+	■ #pragma
+		
+		Se utiliza para especificarle diversas opciones al compilador. Estas opciones son
+		especificas por plataforma y el compilador que se utilice.
