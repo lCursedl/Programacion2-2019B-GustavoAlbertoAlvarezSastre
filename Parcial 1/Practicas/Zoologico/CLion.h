@@ -4,11 +4,11 @@ class CLion :
 	public CMammal
 {
 public:
-	CLion();
+	CLion(unsigned short Age, unsigned short Huger);
+	CLion(CLion * L);
 	~CLion();
 
 	void Reproduce(CAnimal &Couple);
-	unsigned short GetTag();
-	void SetTag();
 	void FeedSon(CAnimal &Baby);
+	CAnimal * GiveCopy();
 };

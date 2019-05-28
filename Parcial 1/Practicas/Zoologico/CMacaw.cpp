@@ -1,31 +1,34 @@
 #include "CMacaw.h"
 
-CMacaw::CMacaw()
+CMacaw::CMacaw(unsigned short Age, unsigned short Hunger)
 {
-	SetTag();
+	mAge = Age;
+	mHunger = Hunger;
+	mFatigue = 0;
+	mGender = 0;
 }
 
+CMacaw::CMacaw(CMacaw * M)
+{
+	mAge = M->mAge;
+	mHunger = M->mHunger;
+	mFatigue = M->mFatigue;
+	mGender = M->mGender;
+}
 
 CMacaw::~CMacaw(){}
 
 void CMacaw::Reproduce(CAnimal & Couple)
 {
-	if (Couple.mTag == MACAW)
+	if (typeid(Couple) == typeid(this))
 	{
 		SetNest();
 	}
 }
 
-unsigned short CMacaw::GetTag()
-{
-	return mTag;
-}
+void CMacaw::SetNest(){}
 
-void CMacaw::SetTag()
+CAnimal * CMacaw::GiveCopy()
 {
-	mTag = MACAW;
-}
-
-void CMacaw::SetNest()
-{
+	return new CMacaw(this);
 }

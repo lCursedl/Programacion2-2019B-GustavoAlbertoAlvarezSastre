@@ -1,4 +1,5 @@
 #pragma once
+#include <typeinfo>
 
 enum ANIMALS
 {
@@ -11,7 +12,6 @@ enum ANIMALS
 class CAnimal
 {
 public:
-	CAnimal() {};
 	~CAnimal() {};
 
 	//Variable correspondiente a la edad del animal
@@ -20,8 +20,6 @@ public:
 	unsigned short mHunger;
 	//Variable correspondiente al cansancio del animal
 	unsigned short mFatigue;
-	//Variable correspondiente a la etiqueta del animal
-	unsigned short mTag;
 	//Variable correspondiente al genero del animal
 	unsigned short mGender;
 
@@ -32,6 +30,21 @@ public:
 	/*Funcion para que el animal se reproduzca, requiere la referencia de otro animal para verificar
 	si es compatible*/
 	virtual void Reproduce(CAnimal &Couple) = 0;
-	virtual unsigned short GetTag() = 0;
-	virtual void SetTag() = 0;
+
+	virtual CAnimal* GiveCopy() = 0;
+
+	bool operator < (CAnimal &A)
+	{
+		return mAge < A.mAge;
+	}
+
+	bool operator == (short &s)
+	{
+		return mAge == s;
+	}
+
+	bool operator > (short &s)
+	{
+		return mAge > s;
+	}
 };

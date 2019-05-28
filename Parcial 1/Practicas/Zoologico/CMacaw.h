@@ -4,11 +4,11 @@ class CMacaw :
 	public CBird
 {
 public:
-	CMacaw();
+	CMacaw(unsigned short Age, unsigned short Hunger);
+	CMacaw(CMacaw * M);
 	~CMacaw();
 
 	void Reproduce(CAnimal &Couple);
-	unsigned short GetTag();
-	void SetTag();
 	void SetNest();
+	CAnimal * GiveCopy();
 };

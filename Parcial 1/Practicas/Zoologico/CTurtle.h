@@ -4,12 +4,12 @@ class CTurtle :
 	public CReptile
 {
 public:
-	CTurtle();
+	CTurtle() {};
+	CTurtle(unsigned short Age, unsigned short Hunger);
+	CTurtle(CTurtle* T);
 	~CTurtle();
 
-	unsigned short GetTag();
-	void SetTag();
 	void Reproduce(CAnimal &Couple);
-
 	void LayEggs();
+	CAnimal* GiveCopy();
 };
