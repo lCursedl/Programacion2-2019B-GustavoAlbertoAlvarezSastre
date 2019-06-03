@@ -10,7 +10,6 @@ public:
 	void Feed(unsigned short FoodAmount);
 	void Sleep(unsigned short RestAmount);
 
-	virtual CAnimal* GiveCopy() = 0;
 	virtual void Reproduce(CAnimal &Couple) = 0;
 	virtual void LayEggs() = 0;
 };

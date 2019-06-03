@@ -12,5 +12,4 @@ public:
 
 	virtual void Reproduce(CAnimal &Couple) = 0;
 	virtual void FeedSon(CAnimal &Baby) = 0;
-	virtual CAnimal * GiveCopy() = 0;
 };

@@ -11,5 +11,4 @@ public:
 
 	void Feed(unsigned short FoodAmount);
 	void Sleep(unsigned short RestAmount);
-	virtual CAnimal* GiveCopy() = 0;
 };

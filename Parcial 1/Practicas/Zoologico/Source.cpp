@@ -6,6 +6,14 @@
 
 using std::vector;
 
+enum SORT_TYPE
+{
+	NAME,
+	AGE,
+	HEALTH
+};
+
+//Funcion para intercambiar 2 punteros de posición
 void Swap(CAnimal * & A, CAnimal * & B)
 {
 	CAnimal * Aptr = A;
@@ -41,7 +49,7 @@ short BinaryShearch(vector<CAnimal*>&List, short First, short Last, short Search
 	return -1;
 }
 
-void QuickSort(vector<CAnimal*>&List, int First, int Last)
+void QuickSort(vector<CAnimal*>&List, int First, int Last, SORT_TYPE S)
 {
 	//Si el tamaño del arreglo es al menos de 2
 	if (First < Last)
@@ -51,20 +59,105 @@ void QuickSort(vector<CAnimal*>&List, int First, int Last)
 		//Variable para determinar el numero más pequeño
 		int Smaller = First - 1;
 		//Se recorre la lista desde el primer elemento indicado hasta el penultimo indicado
-		for (int i = First; i <= Last - 1; i++)
+
+		switch (S)
 		{
-			//Se revisa si el numero actual es menor al pivote
-			if (*List[i] < *List[Pivot])
+		case NAME:
+			for (int i = First; i <= Last - 1; i++)
 			{
-				Smaller++;
-				Swap(List[Smaller], List[i]);
+				if (List[i]->GetName() == List[Pivot]->GetName())
+				{
+					if (List[i]->GetAge() == List[Pivot]->GetAge())
+					{
+						if (List[i]->GetHealth() == List[Pivot]->GetHealth())
+						{
+							Smaller++;
+						}
+						else if (List[i]->GetHealth() < List[Pivot]->GetHealth())
+						{
+							Smaller++;
+							Swap(List[Smaller], List[i]);
+						}
+					}
+					else if (List[i]->GetAge() < List[Pivot]->GetAge())
+					{
+						Smaller++;
+						Swap(List[Smaller], List[i]);
+					}
+				}
+				else if (List[i]->GetName() < List[Pivot]->GetName())
+				{
+					Smaller++;
+					Swap(List[Smaller], List[i]);
+				}
 			}
+			break;
+		case AGE:
+			for (int i = First; i <= Last - 1; i++)
+			{
+				if (List[i]->GetAge() == List[Pivot]->GetAge())
+				{
+					if (List[i]->GetName() == List[Pivot]->GetName())
+					{
+						if (List[i]->GetHealth() == List[Pivot]->GetHealth())
+						{
+							Smaller++;
+						}
+						else if (List[i]->GetHealth() < List[Pivot]->GetHealth())
+						{
+							Smaller++;
+							Swap(List[Smaller], List[i]);
+						}
+					}
+					else if (List[i]->GetName() < List[Pivot]->GetName())
+					{
+						Smaller++;
+						Swap(List[Smaller], List[i]);
+					}
+				}
+				else if (List[i]->GetAge() < List[Pivot]->GetAge())
+				{
+					Smaller++;
+					Swap(List[Smaller], List[i]);
+				}
+			}
+			break;
+		case HEALTH:
+			for (int i = First; i <= Last - 1; i++)
+			{
+				if (List[i]->GetHealth() == List[Pivot]->GetHealth())
+				{
+					if (List[i]->GetName() == List[Pivot]->GetName())
+					{
+						if (List[i]->GetAge() == List[Pivot]->GetAge())
+						{
+							Smaller++;
+						}
+						else if (List[i]->GetAge() < List[Pivot]->GetAge())
+						{
+							Smaller++;
+							Swap(List[Smaller], List[i]);
+						}
+					}
+					else if (List[i]->GetName() < List[Pivot]->GetName())
+					{
+						Smaller++;
+						Swap(List[Smaller], List[i]);
+					}
+				}
+				else if (List[i]->GetHealth() < List[Pivot]->GetHealth())
+				{
+					Smaller++;
+					Swap(List[Smaller], List[i]);
+				}
+			}
+			break;
 		}
 		//Se mueve el pivote a su lugar correspondiente
 		Swap(List[Smaller + 1], List[Pivot]);
 		//Se llama de nuevo la funcion, diviendo en 2 la lista desde el pivote
-		QuickSort(List, First, Smaller);
-		QuickSort(List, Smaller + 2, Last);
+		QuickSort(List, First, Smaller, S);
+		QuickSort(List, Smaller + 2, Last, S);
 	}
 }
 
@@ -72,12 +165,12 @@ int main()
 {
 	vector<CAnimal*>MyZoo;
 
-	CTurtle TurtleA(5, 0);
-	CTurtle TurtleB(25, 10);
-	CLion LionA(30, 25);
-	CLion LionB(6, 40);
-	CMacaw MacawA(2, 5);
-	CMacaw MacawB(10, 15);
+	CTurtle TurtleA((int)1, "Joe", GOOD);
+	CTurtle TurtleB((int) 25, "Mark", GOOD);
+	CLion LionA((int)30, "Buck", GOOD);
+	CLion LionB((int)10, "Cotor", BAD);
+	CMacaw MacawA((int)2, "Pip", BAD);
+	CMacaw MacawB((int)10, "Cotor", CRITICAL);
 
 	MyZoo.push_back(&TurtleA);
 	MyZoo.push_back(&TurtleB);
@@ -88,18 +181,19 @@ int main()
 
 	for (int i = 0; i < MyZoo.size(); i++)
 	{
-		std::cout << typeid(*MyZoo[i]).name() << " : " << MyZoo[i]->mAge << "\n";
+		std::cout << typeid(*MyZoo[i]).name() << " : " << MyZoo[i]->GetName() << ", " << (int)MyZoo[i]->GetAge() << ", " << MyZoo[i]->GetHealth() << "\n";
 	}
 	std::cout << "\n";
 
 	unsigned short ZooSize = MyZoo.size();
 
-	QuickSort(MyZoo, 0, ZooSize - 1);
+	QuickSort(MyZoo, 0, ZooSize - 1, NAME);
 
 	for (int i = 0; i < MyZoo.size(); i++)
 	{
-		std::cout << typeid(*MyZoo[i]).name() << " : " << MyZoo[i]->mAge << "\n";
+		std::cout << typeid(*MyZoo[i]).name() << " : " << MyZoo[i]->GetName() << ", " << (int)MyZoo[i]->GetAge() << ", " << MyZoo[i]->GetHealth() << "\n";
 	}
+	std::cout << "\n";
 
 	short Input;
 	std::cout << "Introduzca la edad de un animal a buscar: ";

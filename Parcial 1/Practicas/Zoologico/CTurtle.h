@@ -5,11 +5,9 @@ class CTurtle :
 {
 public:
 	CTurtle() {};
-	CTurtle(unsigned short Age, unsigned short Hunger);
-	CTurtle(CTurtle* T);
+	CTurtle(unsigned char Age, std::string Name, HEALTH H);
 	~CTurtle();
 
 	void Reproduce(CAnimal &Couple);
 	void LayEggs();
-	CAnimal* GiveCopy();
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include <typeinfo>
+#include <string>
 
 enum ANIMALS
 {
@@ -9,11 +10,17 @@ enum ANIMALS
 	FROG
 };
 
+enum HEALTH
+{
+	GOOD,
+	BAD,
+	CRITICAL
+};
+
 class CAnimal
 {
-public:
-	~CAnimal() {};
-
+protected:
+	
 	//Variable correspondiente a la edad del animal
 	unsigned short mAge;
 	//Variable correspondiente al hambre del animal
@@ -23,6 +30,13 @@ public:
 	//Variable correspondiente al genero del animal
 	unsigned short mGender;
 
+	unsigned char cAge;
+	std::string sName;
+	HEALTH mHealth;
+
+public:
+	~CAnimal() {};	
+
 	//Funcion para alimentar al animal, requiere la cantidad a reducir de hambre
 	virtual void Feed(unsigned short FoodAmount) = 0;
 	//Funcion para reducir el nivel de cansancio del animal, requiere la cantidad a reducir
@@ -31,7 +45,10 @@ public:
 	si es compatible*/
 	virtual void Reproduce(CAnimal &Couple) = 0;
 
-	virtual CAnimal* GiveCopy() = 0;
+	unsigned short GiveAge()
+	{
+		return mAge;
+	}
 
 	bool operator < (CAnimal &A)
 	{
@@ -46,5 +63,35 @@ public:
 	bool operator > (short &s)
 	{
 		return mAge > s;
+	}
+
+	void SetName(std::string s)
+	{
+		sName = s;
+	}
+
+	void SetAge(char Age)
+	{
+		cAge = Age;
+	}
+
+	void SetHealth(HEALTH H)
+	{
+		mHealth = H;
+	}
+
+	std::string GetName()
+	{
+		return sName;
+	}
+
+	char GetAge()
+	{
+		return cAge;
+	}
+
+	HEALTH GetHealth()
+	{
+		return mHealth;
 	}
 };

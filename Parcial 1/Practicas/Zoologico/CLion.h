@@ -4,11 +4,9 @@ class CLion :
 	public CMammal
 {
 public:
-	CLion(unsigned short Age, unsigned short Huger);
-	CLion(CLion * L);
+	CLion(unsigned char Age, std::string Name, HEALTH H);
 	~CLion();
 
 	void Reproduce(CAnimal &Couple);
 	void FeedSon(CAnimal &Baby);
-	CAnimal * GiveCopy();
 };

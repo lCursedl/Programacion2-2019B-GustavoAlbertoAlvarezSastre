@@ -1,19 +1,10 @@
 #include "CTurtle.h"
 
-CTurtle::CTurtle(unsigned short Age, unsigned short Hunger)
+CTurtle::CTurtle(unsigned char Age, std::string Name, HEALTH H)
 {
-	mAge = Age;
-	mHunger = Hunger;
-	mFatigue = 0;
-	mGender = 0;
-}
-
-CTurtle::CTurtle(CTurtle * T)
-{
-	mAge = T->mAge;
-	mHunger = T->mHunger;
-	mFatigue = T->mFatigue;
-	mGender = T->mGender;
+	cAge = Age;
+	sName = Name;
+	mHealth = H;
 }
 
 CTurtle::~CTurtle(){}
@@ -30,8 +21,3 @@ void CTurtle::Reproduce(CAnimal & Couple)
 
 //Funcion para que la entidad instancie nuevos animales del mismo tipo y especie
 void CTurtle::LayEggs(){}
-
-CAnimal * CTurtle::GiveCopy()
-{
-	return new CTurtle(this);
-}

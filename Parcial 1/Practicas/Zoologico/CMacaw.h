@@ -4,11 +4,9 @@ class CMacaw :
 	public CBird
 {
 public:
-	CMacaw(unsigned short Age, unsigned short Hunger);
-	CMacaw(CMacaw * M);
+	CMacaw(unsigned char Age, std::string Name, HEALTH H);
 	~CMacaw();
 
 	void Reproduce(CAnimal &Couple);
 	void SetNest();
-	CAnimal * GiveCopy();
 };

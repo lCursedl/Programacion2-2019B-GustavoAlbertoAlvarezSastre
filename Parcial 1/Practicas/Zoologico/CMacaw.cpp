@@ -1,19 +1,10 @@
 #include "CMacaw.h"
 
-CMacaw::CMacaw(unsigned short Age, unsigned short Hunger)
+CMacaw::CMacaw(unsigned char Age, std::string Name, HEALTH H)
 {
-	mAge = Age;
-	mHunger = Hunger;
-	mFatigue = 0;
-	mGender = 0;
-}
-
-CMacaw::CMacaw(CMacaw * M)
-{
-	mAge = M->mAge;
-	mHunger = M->mHunger;
-	mFatigue = M->mFatigue;
-	mGender = M->mGender;
+	cAge = Age;
+	sName = Name;
+	mHealth = H;
 }
 
 CMacaw::~CMacaw(){}
@@ -27,8 +18,3 @@ void CMacaw::Reproduce(CAnimal & Couple)
 }
 
 void CMacaw::SetNest(){}
-
-CAnimal * CMacaw::GiveCopy()
-{
-	return new CMacaw(this);
-}
