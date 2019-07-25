@@ -5,7 +5,7 @@ CTree::CTree()
 	Root = nullptr;
 }
 
-CTree::CTree(CUser * & R)
+CTree::CTree(CUser * R)
 {
 	Root = R;
 }
@@ -44,5 +44,17 @@ void CTree::TreePostOrden()
 	if (Root != nullptr)
 	{
 		Root->PostOrden();
+	}
+}
+
+void CTree::Insert(CUser * & Node)
+{
+	if (Root != nullptr)
+	{
+		Root->InsertToNode(Node);
+	}
+	else
+	{
+		Root = Node;
 	}
 }

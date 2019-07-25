@@ -78,3 +78,84 @@ void CUser::PostOrden()
 	std::cout << "\t" << m_edad << "\n";
 	std::cout << "\n";
 }
+
+void CUser::InsertToNode(CUser * NodetoInsert)
+{
+	if (NodetoInsert->m_apellido > m_apellido)
+	{
+		if (Der != nullptr)
+		{
+			Der->InsertToNode(NodetoInsert);
+		}
+		else
+		{
+			Der = NodetoInsert;
+		}
+		
+	}
+	else if (NodetoInsert->m_apellido < m_apellido)
+	{
+		if (Izq != nullptr)
+		{
+			Izq->InsertToNode(NodetoInsert);
+		}
+		else
+		{
+			Izq = NodetoInsert;
+		}
+	}
+	else
+	{
+		if (NodetoInsert->m_nombre > m_nombre)
+		{
+			if (Der != nullptr)
+			{
+				Der->InsertToNode(NodetoInsert);
+			}
+			else
+			{
+				Der = NodetoInsert;
+			}
+		}
+		else if (NodetoInsert->m_nombre < m_nombre)
+		{
+			if (Izq != nullptr)
+			{
+				Izq->InsertToNode(NodetoInsert);
+			}
+			else
+			{
+				Izq = NodetoInsert;
+			}
+		}
+		else
+		{
+			if (NodetoInsert->m_edad > m_edad)
+			{
+				if (Der != nullptr)
+				{
+					Der->InsertToNode(NodetoInsert);
+				}
+				else
+				{
+					Der = NodetoInsert;
+				}
+			}
+			else if (NodetoInsert->m_edad < m_edad)
+			{
+				if (Izq != nullptr)
+				{
+					Izq->InsertToNode(NodetoInsert);
+				}
+				else
+				{
+					Izq = NodetoInsert;
+				}
+			}
+			else
+			{
+				std::cout << "El nodo ingresado ya existe.\n";
+			}
+		}
+	}
+}

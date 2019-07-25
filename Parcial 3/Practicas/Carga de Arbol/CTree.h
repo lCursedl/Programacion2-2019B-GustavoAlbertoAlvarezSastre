@@ -7,11 +7,12 @@ public:
 	CUser * Root;
 
 	CTree();
-	CTree(CUser * & R);
+	CTree(CUser * R);
 	CTree(std::string RootName, std::string RootLastName, int RootAge);
 	~CTree();
 
 	void TreeInOrden();
 	void TreePreOrden();
 	void TreePostOrden();
+	void Insert(CUser * & Node);
 };

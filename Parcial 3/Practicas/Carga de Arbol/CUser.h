@@ -19,4 +19,5 @@ public:
 	void InOrden();
 	void PreOrden();
 	void PostOrden();
+	void InsertToNode(CUser * NodetoInsert);
 };
