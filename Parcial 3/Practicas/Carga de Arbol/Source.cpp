@@ -55,5 +55,6 @@ int main()
 			break;
 		}
 	}
+	std::cin.get();
 	return 0;
 }

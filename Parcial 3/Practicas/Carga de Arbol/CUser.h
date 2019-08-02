@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+
 class CUser
 {
 public:
@@ -19,5 +20,8 @@ public:
 	void InOrden();
 	void PreOrden();
 	void PostOrden();
-	void InsertToNode(CUser * NodetoInsert);
+	void InsertToNode(CUser * & NodetoInsert);
+	bool operator > (CUser & Node);
+	bool operator == (CUser & Node);
+	void Delete(CUser * Node);
 };

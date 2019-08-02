@@ -14,5 +14,7 @@ public:
 	void TreeInOrden();
 	void TreePreOrden();
 	void TreePostOrden();
+	//Funcion para insertar un nodo en el arbol
 	void Insert(CUser * & Node);
+	void Delete(std::string NodeApellido);
 };
