@@ -169,4 +169,92 @@ void CTree<T>::Delete(T ToDelete)
 	}
 }
 
+template<class T>
+void CTree<T>::RightRotate(CUser<T> * & Node)
+{
+	CUser<T> * Pivot;
+	if (Node->Izq != nullptr)
+	{
+		Pivot = Node->Izq;
+		if (Pivot->Der != nullptr)
+		{
+			Node->Izq = Pivot->Der;
+		}
+		Pivot->Der = Node;
+		if (*Node != *Root)
+		{
+			CUser<T> * Parent = Root;
+			while (Parent != nullptr)
+			{
+				if (Parent > Node)
+				{
+					if (Parent->Izq == Node)
+					{
+						Parent->Izq = Pivot;
+					}
+					else
+					{
+						Parent = Parent->Izq;
+					}
+				}
+				else
+				{
+					if (Parent->Der == Node)
+					{
+						Parent->Der = Pivot;
+					}
+					else
+					{
+						Parent = Parent->Der;
+					}
+				}
+			}
+		}
+	}
+}
+
+template<class T>
+void CTree<T>::LeftRotate(CUser<T> * & Node)
+{
+	CUser<T> * Pivot;
+	if (Node->Der != nullptr)
+	{
+		Pivot = Node->Der;
+		if (Pivot->Izq != nullptr)
+		{
+			Node->Der = Pivot->Izq;
+		}
+		Pivot->Izq = Node;
+		if (*Node != *Root)
+		{
+			CUser<T> * Parent = Root;
+			while (Parent != nullptr)
+			{
+				if (Parent > Node)
+				{
+					if (Parent->Izq == Node)
+					{
+						Parent->Izq = Pivot;
+					}
+					else
+					{
+						Parent = Parent->Izq;
+					}
+				}
+				else
+				{
+					if (Parent->Der == Node)
+					{
+						Parent->Der = Pivot;
+					}
+					else
+					{
+						Parent = Parent->Der;
+					}
+				}
+			}
+		}
+	}
+}
+
 template class CTree<CPerson>;

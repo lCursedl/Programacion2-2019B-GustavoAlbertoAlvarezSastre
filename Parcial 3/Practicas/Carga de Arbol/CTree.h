@@ -20,4 +20,6 @@ public:
 	void TreePostOrden();
 	void Insert(CUser<T> * & Node);
 	void Delete(T ToDelete);
+	void RightRotate(CUser<T> * & Node);
+	void LeftRotate(CUser<T> * & Node);
 };
