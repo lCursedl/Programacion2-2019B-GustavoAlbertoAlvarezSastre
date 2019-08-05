@@ -7,9 +7,8 @@ CUser<T>::CUser()
 }
 
 template<class T>
-CUser<T>::CUser(T Info)
+CUser<T>::CUser(T Info) : Data(Info)
 {
-	Data = Info;
 	Izq = nullptr;
 	Der = nullptr;
 }
@@ -72,23 +71,31 @@ void CUser<T>::PostOrden()
 template<class T>
 void CUser<T>::InsertToNode(CUser<T> * & NodetoInsert)
 {
+	//Si el nodo atual es mayor al nodo a insertar
 	if (*this > *NodetoInsert)
 	{
+		//Si el puntero derecho contiene algo
 		if (Der != nullptr)
 		{
+			//Se pasa el nodo al puntero derecho para insertar
 			Der->InsertToNode(NodetoInsert);
 		}
+		//De lo contrario se asigna directamente
 		else
 		{
 			Der = NodetoInsert;
 		}
 	}
+	//De lo contrario si es menor
 	else
 	{
+		//Si el puntero izquierdo contiene algo
 		if (Izq != nullptr)
 		{
+			//Se pasa el nodo al puntero izquierdo para insertar
 			Izq->InsertToNode(NodetoInsert);
 		}
+		//De lo contrario se asigna directamente
 		else
 		{
 			Izq = NodetoInsert;

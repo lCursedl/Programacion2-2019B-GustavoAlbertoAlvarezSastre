@@ -2,25 +2,37 @@
 
 int main()
 {
+	//Variables para recibir input y controlar ciclo
 	bool Cycle = true;
 	int input;
+	//Inicializacion de un puntero a arbol
 	CTree <CPerson> * MyTree = new CTree<CPerson>();
-	CUser<CPerson> * TestNode = new CUser<CPerson>(CPerson("Alvarez", "Gustavo", 4));
+	//Inicializacion de un puntero a nodo con tipo Persona
+	CUser<CPerson> * TestNode = new CUser<CPerson>();
+	//Insercion de nodo en el arbol
 	MyTree->Insert(TestNode);
+
 	TestNode = new CUser<CPerson>(CPerson("Guerrero", "Ramses", 2));
 	MyTree->Insert(TestNode);
+
 	TestNode = new CUser<CPerson>(CPerson("Cota", "Victor", 3));
 	MyTree->Insert(TestNode);
+
 	TestNode = new CUser<CPerson>(CPerson("Del Moral", "Jesus", 1));
 	MyTree->Insert(TestNode);
+
 	TestNode = new CUser<CPerson>(CPerson("Magno", "Sebastian", 5));
 	MyTree->Insert(TestNode);
+
 	TestNode = new CUser<CPerson>(CPerson("Chong", "Juan", 6));
 	MyTree->Insert(TestNode);
+
 	TestNode = new CUser<CPerson>(CPerson("Ramirez", "Roberto", 7));
 	MyTree->Insert(TestNode);
+
 	TestNode = new CUser<CPerson>(CPerson("Solis", "Emilio", 8));
 	MyTree->Insert(TestNode);
+
 	TestNode = new CUser<CPerson>(CPerson("Smith", "Jonh", 9));
 	MyTree->Insert(TestNode);
 

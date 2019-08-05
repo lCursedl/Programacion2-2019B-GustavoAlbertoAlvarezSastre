@@ -1,7 +1,14 @@
 #include "CPerson.h"
 
 CPerson::CPerson()
-{}
+{
+	std::cout << "Introduzca un nombre: ";
+	std::cin >> m_nombre;
+	std::cout << "Introduzca un apellido: ";
+	std::cin >> m_apellido;
+	std::cout << "Introduzca una edad: ";
+	std::cin >> m_edad;
+}
 
 CPerson::CPerson(std::string apellido, std::string nombre, int edad)
 {
@@ -10,8 +17,7 @@ CPerson::CPerson(std::string apellido, std::string nombre, int edad)
 	m_edad = edad;
 }
 
-CPerson::~CPerson()
-{}
+CPerson::~CPerson(){}
 
 bool CPerson::operator>(CPerson & Persona)
 {
@@ -26,6 +32,22 @@ bool CPerson::operator>(CPerson & Persona)
 	else if (m_edad != Persona.m_edad)
 	{
 		return m_edad > Persona.m_edad;
+	}
+}
+
+bool CPerson::operator<(CPerson & Persona)
+{
+	if (m_apellido != Persona.m_apellido)
+	{
+		return m_apellido < Persona.m_apellido;
+	}
+	else if (m_nombre != Persona.m_nombre)
+	{
+		return m_nombre < Persona.m_nombre;
+	}
+	else if (m_edad != Persona.m_edad)
+	{
+		return m_edad < Persona.m_edad;
 	}
 }
 

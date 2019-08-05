@@ -4,16 +4,20 @@ template<class T>
 class CTree
 {
 public:
-	CUser<T> * Root;
+	/*Constructor/Destructor*/
 
 	CTree();
 	CTree(CUser<T> * R);
 	~CTree();
 
+	/*Miembros*/
+	CUser<T> * Root;
+
+	/*Metodos*/
+
 	void TreeInOrden();
 	void TreePreOrden();
 	void TreePostOrden();
-	//Funcion para insertar un nodo en el arbol
 	void Insert(CUser<T> * & Node);
-	//void Delete(std::string NodeApellido);
+	void Delete(T ToDelete);
 };
