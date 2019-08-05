@@ -1,19 +1,21 @@
 #include "CUser.h"
-
-CUser::CUser()
+template<class T>
+CUser<T>::CUser()
 {
 	Izq = nullptr;
 	Der = nullptr;
 }
 
-CUser::CUser(std::string apellido, std::string nombre, int edad)
+template<class T>
+CUser<T>::CUser(T Info)
 {
-	m_apellido = apellido;
-	m_nombre = nombre;
-	m_edad = edad;
+	Data = Info;
+	Izq = nullptr;
+	Der = nullptr;
 }
 
-CUser::~CUser()
+template<class T>
+CUser<T>::~CUser()
 {
 	if (Izq != nullptr)
 	{
@@ -25,34 +27,24 @@ CUser::~CUser()
 	}
 }
 
-std::ostream & CUser::operator<<(std::ostream & out)
-{
-	out << "Nombre: " << m_nombre << ".\n\tApellido: " << m_apellido << ".\n\t\tEdad: " << m_edad << ".\n";
-	return out;
-}
-
-void CUser::InOrden()
+template<class T>
+void CUser<T>::InOrden()
 {
 	if (Izq != nullptr)
 	{
 		Izq->InOrden();
 	}
-	std::cout << "\t" << m_apellido << "\n";
-	std::cout << "\t" << m_nombre << "\n";
-	std::cout << "\t" << m_edad << "\n";
-	std::cout << "\n";
+	std::cout << Data << "\n";
 	if (Der != nullptr)
 	{
 		Der->InOrden();
 	}
 }
 
-void CUser::PreOrden()
+template<class T>
+void CUser<T>::PreOrden()
 {
-	std::cout << "\t" << m_apellido << "\n";
-	std::cout << "\t" << m_nombre << "\n";
-	std::cout << "\t" << m_edad << "\n";
-	std::cout << "\n";
+	std::cout << Data << "\n";
 	if (Izq != nullptr)
 	{
 		Izq->PreOrden();
@@ -63,7 +55,8 @@ void CUser::PreOrden()
 	}
 }
 
-void CUser::PostOrden()
+template<class T>
+void CUser<T>::PostOrden()
 {
 	if (Izq != nullptr)
 	{
@@ -73,13 +66,11 @@ void CUser::PostOrden()
 	{
 		Der->PostOrden();
 	}
-	std::cout << "\t" << m_apellido << "\n";
-	std::cout << "\t" << m_nombre << "\n";
-	std::cout << "\t" << m_edad << "\n";
-	std::cout << "\n";
+	std::cout << Data << "\n";
 }
 
-void CUser::InsertToNode(CUser * & NodetoInsert)
+template<class T>
+void CUser<T>::InsertToNode(CUser<T> * & NodetoInsert)
 {
 	if (*this > *NodetoInsert)
 	{
@@ -105,35 +96,10 @@ void CUser::InsertToNode(CUser * & NodetoInsert)
 	}
 }
 
-bool CUser::operator>(CUser & Node)
+template<class T>
+bool CUser<T>::operator>(CUser & U)
 {
-	if (Node.m_apellido != m_apellido)
-	{
-		return m_apellido > Node.m_apellido;
-	}
-	else if (Node.m_nombre != m_nombre)
-	{
-		return m_nombre > Node.m_nombre;
-	}
-	else if(Node.m_edad != m_edad)
-	{
-		return m_edad > Node.m_edad;
-	}
+	return Data > U.Data;
 }
 
-bool CUser::operator==(CUser & Node)
-{
-	if (m_apellido == Node.m_apellido && m_nombre == Node.m_nombre && m_edad == Node.m_edad)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-void CUser::Delete(CUser * Node)
-{
-	
-}
+template class CUser<CPerson>;

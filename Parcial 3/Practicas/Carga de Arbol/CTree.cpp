@@ -1,21 +1,19 @@
 #include "CTree.h"
 
-CTree::CTree()
+template<class T>
+CTree<T>::CTree()
 {
 	Root = nullptr;
 }
 
-CTree::CTree(CUser * R)
+template<class T>
+CTree<T>::CTree(CUser<T> * R)
 {
 	Root = R;
 }
 
-CTree::CTree(std::string RootName, std::string RootLastName, int RootAge)
-{
-	Root = new CUser(RootName, RootLastName, RootAge);
-}
-
-CTree::~CTree()
+template<class T>
+CTree<T>::~CTree()
 {
 	if (Root != nullptr)
 	{
@@ -23,7 +21,8 @@ CTree::~CTree()
 	}
 }
 
-void CTree::TreeInOrden()
+template<class T>
+void CTree<T>::TreeInOrden()
 {
 	if (Root != nullptr)
 	{
@@ -31,7 +30,8 @@ void CTree::TreeInOrden()
 	}
 }
 
-void CTree::TreePreOrden()
+template<class T>
+void CTree<T>::TreePreOrden()
 {
 	if (Root != nullptr)
 	{
@@ -39,7 +39,8 @@ void CTree::TreePreOrden()
 	}
 }
 
-void CTree::TreePostOrden()
+template<class T>
+void CTree<T>::TreePostOrden()
 {
 	if (Root != nullptr)
 	{
@@ -47,7 +48,8 @@ void CTree::TreePostOrden()
 	}
 }
 
-void CTree::Insert(CUser * & Node)
+template<class T>
+void CTree<T>::Insert(CUser<T> * & Node)
 {
 	//Se revisa si la raiz del arbol tiene algun elemento almacenado
 	if (Root != nullptr)
@@ -62,97 +64,100 @@ void CTree::Insert(CUser * & Node)
 	}
 }
 
-void CTree::Delete(std::string NodeApellido)
-{
-	CUser * TempChild;
-	CUser * TempFather;
-	TempChild = Root;
-	//Si la raiz no es un puntero nulo
-	while (TempChild != nullptr)
-	{
-		//Se revisa si el nodo temporal tiene el valor buscado
-		if (NodeApellido == TempChild->m_apellido)
-		{
-			if (TempChild->Izq == nullptr && TempChild->Der == nullptr)
-			{
-				if (TempFather != nullptr)
-				{
-					if (TempFather->Izq == TempChild)
-					{
-						TempFather->Izq = nullptr;
-					}
-					else if (TempFather->Der == TempChild)
-					{
-						TempFather->Der = nullptr;
-					}
-				}
-				delete TempChild;
-				break;
-			}
-			else if (TempChild->Izq == nullptr && TempChild->Der != nullptr)
-			{
-				if (TempFather != nullptr)
-				{
-					if (TempFather->Izq == TempChild)
-					{
-						TempFather->Izq = TempChild->Der;						
-					}
-					else if (TempFather->Der == TempChild)
-					{
-						TempFather->Der = TempChild->Der;
-					}
-					TempChild->Der = nullptr;
-					delete TempChild;
-				}
-				else
-				{
+//template<class T>
+//void CTree<T>::Delete(std::string NodeApellido)
+//{
+//	CUser<T> * TempChild;
+//	CUser<T> * TempFather;
+//	TempChild = Root;
+//	//Si la raiz no es un puntero nulo
+//	while (TempChild != nullptr)
+//	{
+//		//Se revisa si el nodo temporal tiene el valor buscado
+//		if (TempChild->Data == NodeApellido)
+//		{
+//			if (TempChild->Izq == nullptr && TempChild->Der == nullptr)
+//			{
+//				if (TempFather != nullptr)
+//				{
+//					if (TempFather->Izq == TempChild)
+//					{
+//						TempFather->Izq = nullptr;
+//					}
+//					else if (TempFather->Der == TempChild)
+//					{
+//						TempFather->Der = nullptr;
+//					}
+//				}
+//				delete TempChild;
+//				break;
+//			}
+//			else if (TempChild->Izq == nullptr && TempChild->Der != nullptr)
+//			{
+//				if (TempFather != nullptr)
+//				{
+//					if (TempFather->Izq == TempChild)
+//					{
+//						TempFather->Izq = TempChild->Der;						
+//					}
+//					else if (TempFather->Der == TempChild)
+//					{
+//						TempFather->Der = TempChild->Der;
+//					}
+//					TempChild->Der = nullptr;
+//					delete TempChild;
+//				}
+//				else
+//				{
+//
+//				}
+//			}
+//			else if (TempChild->Izq != nullptr && TempChild->Der == nullptr)
+//			{
+//				if (TempFather != nullptr)
+//				{
+//					if (TempFather->Izq == TempChild)
+//					{
+//						TempFather->Izq = TempChild->Izq;
+//					}
+//					else if (TempFather->Der == TempChild)
+//					{
+//						TempFather->Der = TempChild->Izq;
+//					}
+//					TempChild->Izq = nullptr;
+//					delete TempChild;
+//				}
+//				else
+//				{
+//
+//				}
+//			}
+//			else if (TempChild->Izq != nullptr && TempChild->Der != nullptr)
+//			{
+//
+//			}
+//		}
+//		//Se revisa si el dato recibido es de mayor valor
+//		else if (TempChild->Data < NodeApellido)
+//		{
+//			//Si hay un valor valido hacia la derecha
+//			if (TempChild->Der != nullptr)
+//			{
+//				TempFather = TempChild;
+//				TempChild = TempChild->Der;
+//			}
+//		}
+//		//Se revisa en caso de ser menor
+//		else
+//		{
+//			//Si hay un vaor valido hacia la izquierda
+//			if (TempChild->Izq != nullptr)
+//			{
+//				TempFather = TempChild;
+//				TempChild = TempChild->Izq;
+//			}
+//		}
+//	}
+//}
 
-				}
-			}
-			else if (TempChild->Izq != nullptr && TempChild->Der == nullptr)
-			{
-				if (TempFather != nullptr)
-				{
-					if (TempFather->Izq == TempChild)
-					{
-						TempFather->Izq = TempChild->Izq;
-					}
-					else if (TempFather->Der == TempChild)
-					{
-						TempFather->Der = TempChild->Izq;
-					}
-					TempChild->Izq = nullptr;
-					delete TempChild;
-				}
-				else
-				{
-
-				}
-			}
-			else if (TempChild->Izq != nullptr && TempChild->Der != nullptr)
-			{
-
-			}
-		}
-		//Se revisa si el dato recibido es de mayor valor
-		else if (NodeApellido > TempChild->m_apellido)
-		{
-			//Si hay un valor valido hacia la derecha
-			if (TempChild->Der != nullptr)
-			{
-				TempFather = TempChild;
-				TempChild = TempChild->Der;
-			}
-		}
-		//Se revisa en caso de ser menor
-		else
-		{
-			//Si hay un vaor valido hacia la izquierda
-			if (TempChild->Izq != nullptr)
-			{
-				TempFather = TempChild;
-				TempChild = TempChild->Izq;
-			}
-		}
-	}
-}
+template class CTree<CPerson>;

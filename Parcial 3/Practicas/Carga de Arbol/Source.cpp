@@ -4,24 +4,24 @@ int main()
 {
 	bool Cycle = true;
 	int input;
-	CTree * MyTree = new CTree();
-	CUser * TestNode = new CUser("Gustavo", "Alvarez", 4);	
+	CTree <CPerson> * MyTree = new CTree<CPerson>();
+	CUser<CPerson> * TestNode = new CUser<CPerson>(CPerson("Alvarez", "Gustavo", 4));
 	MyTree->Insert(TestNode);
-	TestNode = new CUser("Ramses", "Guerrero", 2);
+	TestNode = new CUser<CPerson>(CPerson("Guerrero", "Ramses", 2));
 	MyTree->Insert(TestNode);
-	TestNode = new CUser("Victor", "Cota", 3);
+	TestNode = new CUser<CPerson>(CPerson("Cota", "Victor", 3));
 	MyTree->Insert(TestNode);
-	TestNode = new CUser("Jesus", "Del Moral", 1);
+	TestNode = new CUser<CPerson>(CPerson("Del Moral", "Jesus", 1));
 	MyTree->Insert(TestNode);
-	TestNode = new CUser("Sebastian", "Magno", 5);
+	TestNode = new CUser<CPerson>(CPerson("Magno", "Sebastian", 5));
 	MyTree->Insert(TestNode);
-	TestNode = new CUser("Juan", "Chong", 6);
+	TestNode = new CUser<CPerson>(CPerson("Chong", "Juan", 6));
 	MyTree->Insert(TestNode);
-	TestNode = new CUser("Roberto", "Ramirez", 7);
+	TestNode = new CUser<CPerson>(CPerson("Ramirez", "Roberto", 7));
 	MyTree->Insert(TestNode);
-	TestNode = new CUser("Emilio", "Solis", 8);
+	TestNode = new CUser<CPerson>(CPerson("Solis", "Emilio", 8));
 	MyTree->Insert(TestNode);
-	TestNode = new CUser("John", "Smith", 9);
+	TestNode = new CUser<CPerson>(CPerson("Smith", "Jonh", 9));
 	MyTree->Insert(TestNode);
 
 	while (Cycle)
