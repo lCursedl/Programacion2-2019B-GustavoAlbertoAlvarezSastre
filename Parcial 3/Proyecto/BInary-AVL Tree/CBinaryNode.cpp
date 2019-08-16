@@ -3,99 +3,110 @@
 template <class T>
 CBinaryNode<T>::CBinaryNode()
 {
-	this->Left = nullptr;
-	this->Right = nullptr;
+	Left = nullptr;
+	Right = nullptr;
 }
 
 template <class T>
 CBinaryNode<T>::~CBinaryNode()
 {
-	if (this->Left != nullptr)
+	if (Left != nullptr)
 	{
-		delete this->Left;
+		delete Left;
 	}
-	if (this->Right != nullptr)
+	if (Right != nullptr)
 	{
-		delete this->Right;
+		delete Right;
 	}
 }
 
 template<class T>
 void CBinaryNode<T>::InOrden()
 {
-	if (this->Left != nullptr)
+	if (Left != nullptr)
 	{
-		this->Left->InOrden();
+		Left->InOrden();
 	}
-	std::cout << this->m_Data << "\n";
-	if (this->Right != nullptr)
+	std::cout << m_Data << "\n";
+	if (Right != nullptr)
 	{
-		this->Right->InOrden();
+		Right->InOrden();
 	}
 }
 
 template<class T>
 void CBinaryNode<T>::PreOrden()
 {
-	std::cout << this->m_Data << "\n";
-	if (this->Left != nullptr)
+	std::cout << m_Data << "\n";
+	if (Left != nullptr)
 	{
-		this->Left->PreOrden();
+		Left->PreOrden();
 	}
-	if (this->Right != nullptr)
+	if (Right != nullptr)
 	{
-		this->Right->PreOrden();
+		Right->PreOrden();
 	}
 }
 
 template<class T>
 void CBinaryNode<T>::PostOrden()
 {
-	if (this->Left != nullptr)
+	if (Left != nullptr)
 	{
-		this->Left->PostOrden();
+		Left->PostOrden();
 	}
-	if (this->Right != nullptr)
+	if (Right != nullptr)
 	{
-		this->Right->PostOrden();
+		Right->PostOrden();
 	}
-	std::cout << this->m_Data << "\n";
+	std::cout << m_Data << "\n";
 }
 
 template<class T>
-void CBinaryNode<T>::InsertToNode(CNode<T>*& NodetoInsert)
+void CBinaryNode<T>::InsertToNode(CBinaryNode<T>*& NodetoInsert)
 {
 	//Si el nodo atual es mayor al nodo a insertar
 	if (*this > *NodetoInsert)
 	{
 		//Si el puntero derecho contiene algo
-		if (this->Right != nullptr)
+		if (Right != nullptr)
 		{
 			//Se pasa el nodo al puntero derecho para insertar
-			this->Right->InsertToNode(NodetoInsert);
+			Right->InsertToNode(NodetoInsert);
 		}
 		//De lo contrario se asigna directamente
 		else
 		{
-			this->Right = NodetoInsert;
+			Right = NodetoInsert;
 		}
 	}
 	//De lo contrario si es menor
 	else
 	{
 		//Si el puntero izquierdo contiene algo
-		if (this->Left != nullptr)
+		if (Left != nullptr)
 		{
 			//Se pasa el nodo al puntero izquierdo para insertar
-			this->Left->InsertToNode(NodetoInsert);
+			Left->InsertToNode(NodetoInsert);
 		}
 		//De lo contrario se asigna directamente
 		else
 		{
-			this->Left = NodetoInsert;
+			Left = NodetoInsert;
 		}
 	}
 }
 
+template<class T>
+bool CBinaryNode<T>::operator>(CBinaryNode<T>& N)
+{
+	return m_Data > N.m_Data;
+}
+
+template<class T>
+bool CBinaryNode<T>::operator==(CBinaryNode<T>& N)
+{
+	return m_Data == N.m_Data;
+}
+
 template class CBinaryNode <int>;
-template class CNode <int>;
