@@ -14,6 +14,6 @@ public:
 	void TreeInOrden();
 	void TreePreOrden();
 	void TreePostOrden();
-	void Insert(CBinaryNode<T> * & Node);
-	void Delete(T ToDelete);
+	void Insert();
+	void Delete();
 };

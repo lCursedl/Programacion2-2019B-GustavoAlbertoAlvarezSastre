@@ -28,4 +28,7 @@ public:
 
 	bool operator > (CBinaryNode<T> & N);
 	bool operator == (CBinaryNode<T> & N);
+	bool operator < (CBinaryNode<T> & N);
+
+	
 };

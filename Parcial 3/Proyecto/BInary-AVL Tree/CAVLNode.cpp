@@ -240,3 +240,4 @@ bool CAVLNode<T>::operator==(CAVLNode<T>& N)
 }
 
 template class CAVLNode<int>;
+template class CAVLNode<char>;

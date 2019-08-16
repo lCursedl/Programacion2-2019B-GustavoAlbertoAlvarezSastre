@@ -28,4 +28,5 @@ public:
 	bool operator > (CAVLNode<T> & N);
 	bool operator < (CAVLNode<T> & N);
 	bool operator == (CAVLNode<T> & N);
+
 };

@@ -3,6 +3,8 @@
 template <class T>
 CBinaryNode<T>::CBinaryNode()
 {
+	std::cout << "Introduce el valor del nodo:\n";
+	std::cin >> m_Data;
 	Left = nullptr;
 	Right = nullptr;
 }
@@ -109,4 +111,14 @@ bool CBinaryNode<T>::operator==(CBinaryNode<T>& N)
 	return m_Data == N.m_Data;
 }
 
+template<class T>
+bool CBinaryNode<T>::operator<(CBinaryNode<T>& N)
+{
+	return m_Data < N.m_Data;
+}
+
+
+
 template class CBinaryNode <int>;
+template class CBinaryNode<char>;
+

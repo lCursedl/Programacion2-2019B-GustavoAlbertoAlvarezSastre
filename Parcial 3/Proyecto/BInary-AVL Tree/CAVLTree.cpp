@@ -399,3 +399,4 @@ void CAVLTree<T>::L_rotate(CAVLNode<T>* & Node)
 }
 
 template class CAVLTree<int>;
+template class CAVLTree<char>;
