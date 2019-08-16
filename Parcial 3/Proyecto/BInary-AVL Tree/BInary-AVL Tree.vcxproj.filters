@@ -21,7 +21,10 @@
     <ClInclude Include="CBinaryNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CNode.h">
+    <ClInclude Include="CAVLNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CAVLTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +38,10 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CNode.cpp">
+    <ClCompile Include="CAVLNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CAVLTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

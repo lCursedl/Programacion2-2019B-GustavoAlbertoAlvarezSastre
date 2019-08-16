@@ -116,14 +116,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CAVLNode.h" />
+    <ClInclude Include="CAVLTree.h" />
     <ClInclude Include="CBinaryNode.h" />
     <ClInclude Include="CBinaryTree.h" />
-    <ClInclude Include="CNode.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CAVLNode.cpp" />
+    <ClCompile Include="CAVLTree.cpp" />
     <ClCompile Include="CBinaryNode.cpp" />
     <ClCompile Include="CBinaryTree.cpp" />
-    <ClCompile Include="CNode.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
