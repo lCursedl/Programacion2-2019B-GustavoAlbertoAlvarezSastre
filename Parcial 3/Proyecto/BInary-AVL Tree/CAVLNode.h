@@ -19,6 +19,7 @@ public:
 	void PostOrden();
 
 	void InsertToNode(CAVLNode<T> * & NodetoInsert);
+	void DeleteNode(T ToDelete);
 	int GetLevel();
 	CAVLNode<T> * L_Rotate();
 	CAVLNode<T> * R_Rotate();

@@ -109,6 +109,11 @@ void CAVLNode<T>::InsertToNode(CAVLNode<T>*& NodetoInsert)
 }
 
 template<class T>
+void CAVLNode<T>::DeleteNode(T ToDelete)
+{
+}
+
+template<class T>
 int CAVLNode<T>::GetLevel()
 {
 	int LeftLevel = 0;
